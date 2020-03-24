@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const CounterFunc = props => {
+const CounterFunc = ({speed}) => {
     const [time, setTime] = useState(0)
 
     const changeTick = () => {
@@ -10,12 +10,12 @@ const CounterFunc = props => {
     useEffect(() => {
         const tick = setInterval(() => {
             changeTick()
-        }, props.speed)
+        }, [], speed)
         return () => clearInterval(tick)
     })
     return (
         <div>
-            <h2>It is func ticker with speed {props.speed}:  {time}.</h2>
+            <h2>It is func ticker with speed {speed}:  {time}.</h2>
         </div>
     )
 }

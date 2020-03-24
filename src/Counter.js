@@ -12,7 +12,11 @@ class Counter extends React.Component {
         this.props.speed
       );
     }
-  
+
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+    
     tick() {
       this.setState({
         count: this.state.count +1,
