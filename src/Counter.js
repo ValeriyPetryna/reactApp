@@ -3,10 +3,13 @@ import * as React from 'react';
 class Counter extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {count: 0};
+      this.state = {count: 0, name: ''};
     }
   
     componentDidMount() {
+      this.setState({
+        name: this.props.name
+      });
       this.timerID = setInterval(
         () => this.tick(),
         this.props.speed
@@ -25,8 +28,9 @@ class Counter extends React.Component {
   
     render() {
       return (
-        <div>
-          <h2>It is class ticker with speed {this.props.speed}: {this.state.count}</h2>
+        <div className = "elem">
+          <h2>{this.state.name}</h2>
+          <h2>{this.state.count}</h2>
         </div>
       );
     }
