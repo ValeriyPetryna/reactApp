@@ -1,35 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import {AppContext} from './context/context';
 
 const Progress = ({speed}) => {
-    const [progress, setProgress] = useState(0)
-    const changeProgress = () => {
-        setProgress(progress + speed)
-    }
-    const clearProgress = () => {
-        setProgress(0)
-    }
-    
-    useEffect(() => {
-        const tick = setInterval(() => {
-            changeProgress()
-        }, 1000)
-        
-        return () => {
-            if(progress >= 100) {
-                clearProgress()
-            }
-            clearInterval(tick)
-        } 
-    })
-    
-    const progressInstance = <ProgressBar now = {progress}  />;
+    const value = useContext(AppContext);
+    const tasks = value;
+
+    let taskList = tasks.map((task) => 
+        <div className = "elem">
+            {<ProgressBar now = {task.current}  />}
+        </div>
+    )
 
     return (
         <div className = "elem">
-            {progressInstance}
+            {taskList}
         </div>
     )
 }
 
-export default Progress
+export default Progress;

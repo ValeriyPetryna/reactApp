@@ -4,10 +4,12 @@ import './index.css';
 import Counter from './Counter';
 import CounterFunc from './CounterFunc';
 import Progress from './ProgressBar';
+import { AppContextProvider } from './context/context'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
+    <AppContextProvider>
     <fieldset>
     <div className = "field">
     <div className = "field-left">
@@ -17,13 +19,12 @@ ReactDOM.render(
         <Counter className = "ticker" speed = {800} name = {'Resolved'}/>
       </div>
       <div className = "field-right">
+        <h2 className = "elem">Progress</h2>
         <Progress speed = {20}/>
-        <Progress speed = {18}/>
-        <Progress speed = {33}/>
-        <Progress speed = {16}/>
       </div>
     </div>
     </fieldset>
+    </AppContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
