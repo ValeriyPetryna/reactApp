@@ -12,7 +12,7 @@ import Counter from './components/Counter';
 import ResolvedTasks from './components/ResolvedTasks';
 import TimeCounter from './components/TimeCounter';
 import Progress from './components/ProgressBar';
-import Render from './components/Selector';
+import StrategySelector from './components/Selector';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,7 +27,7 @@ ReactDOM.render(
           <ResolvedTasks  className = "ticker" param = {'resolved'}  name = {'Resolved'}/>
         </div>
         <div className = "field-left-bottom">
-          <Render />
+          <StrategySelector />
         </div>
       </div>
       

@@ -28,14 +28,8 @@ const RadioForm = props => {
   );
 };
 
-const Selector = withFormik({
+const StrategySelector = withFormik({
   mapPropsToValues: () => ({ strategy: "RR" }),
 })(RadioForm);
 
-const Render = () => (
-    <div>
-        <Selector />
-    </div>
-)
-
-export default Render;
+export default StrategySelector;
