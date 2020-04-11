@@ -8,7 +8,7 @@ function useCounter () {
   useEffect(() => {
     const timer = setTimeout(() => { 
       setCounter(counter + 1)
-    }, 300);
+    }, 3000);
     return () => { 
       clearTimeout(timer);
     }
