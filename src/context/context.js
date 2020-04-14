@@ -17,6 +17,10 @@ function useCounter () {
   return counter;
 }
 
+function setStrategy () {
+  
+}
+
 function incrementLast(tasks) { 
   tasks[tasks.length -1].current = tasks[tasks.length -1].current + 1;
 
@@ -56,13 +60,24 @@ export function AppContextProvider({ children }) {
   ]);
   
   const [resolved, setResolved] = useState(-1);
+
+  // Strategy
+  const [strategy, setStrategy] = useState('RR');
+
+  useEffect(() => {
+    console.log(strategy);
+  }, [strategy]);
+  
   // Counter 
   const counter = useCounter();
 
   // Tasks handler
   useEffect(() => {
     const filteredTasks = tasks.filter(task => task.current <= task.threshold);
-    setTasks(incrementLast(filteredTasks));
+    if (strategy == "RR") {
+      const incrementCurrent = obj => ({ ...obj, current: obj.current + 1 });
+      setTasks(tasks.map(incrementCurrent));
+    } else setTasks(incrementLast(filteredTasks));
   }, [counter]);
 
   // Resolved tasks
@@ -76,7 +91,7 @@ export function AppContextProvider({ children }) {
     return () => clearInterval(interval);
   }, []);
 
-  const context = {tasks, resolved, counter}
+  const context = {tasks, resolved, counter, strategy, setStrategy}
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
 }
 

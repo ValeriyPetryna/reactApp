@@ -1,35 +1,29 @@
+import React, { useState, useContext, useEffect } from 'react';
+import {AppContext} from '../context/context';
 
-import React from "react";
-import { withFormik } from "formik";
+const StrategySelector = ({speed}) => {
+    const { strategy, setStrategy } = useContext(AppContext);
+    const [currentStrategy, setCurrentStrategy] = useState(strategy);
+    const availableStrategies = ['FCFS','LCFS','RR','SJN','SRT', 'Custom'];
+    
+    useEffect(() => {
+      setCurrentStrategy(strategy);
+    }, [strategy]);
 
-const RadioForm = props => {
-  const {
-    values,
-    setFieldValue
-  } = props;
-  return (
-    <form className = "radio">
+    let strategyList = availableStrategies.map((strategy) => 
       <label>
-        <input type="radio" name="strategy" value="FCFS" checked={values.strategy === "FCFS"} onChange={() => setFieldValue("strategy", "FCFS")} />  FCFS
+        <input type="radio" name="strategy" value = {strategy } checked={strategy == currentStrategy} onChange={() => setStrategy(strategy)} /> {strategy}
       </label>
-      <label>
-        <input type="radio" name="strategy" value="LCFS" checked={values.strategy === "LCFS"} onChange={() => setFieldValue("strategy", "LCFS")} />  LCFS
-      </label>
-      <label>
-        <input type="radio" name="strategy" value="RR" checked={values.strategy === "RR"} onChange={() => setFieldValue("strategy", "RR")} />  RR
-      </label>
-      <label>
-        <input type="radio" name="strategy" value="SJN" checked={values.strategy === "SJN"} onChange={() => setFieldValue("strategy", "SJN")} />  SJN
-      </label>
-      <label>
-        <input type="radio" name="strategy" value="SRT" checked={values.strategy === "SRT"} onChange={() => setFieldValue("strategy", "SRT")} />  SRT
-      </label>
-    </form>
-  );
-};
+    )
+    
+    if (strategyList.length) {
+        return (
+            <div className = "radio">
+                {strategyList}
+            </div>
+        )
+    } 
+}
 
-const StrategySelector = withFormik({
-  mapPropsToValues: () => ({ strategy: "RR" }),
-})(RadioForm);
 
 export default StrategySelector;
