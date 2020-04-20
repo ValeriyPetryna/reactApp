@@ -108,7 +108,7 @@ export function AppContextProvider({ children }) {
     }
   ]);
   
-  const [resolved, setResolved] = useState(-1);
+  const [resolved, setResolved] = useState(0);
   const [taskId, setTaskId] = useState(0);
   const [strategy, setStrategy] = useState('RR');
   const counter = useCounter();
@@ -143,7 +143,7 @@ export function AppContextProvider({ children }) {
   // Task indexes
   useEffect(() => {
     for (let i = 0; i < tasks.length; i++) {
-      if (tasks[i].index != i) {
+      if (tasks[i].index !== i) {
         setTasks(getIndex(tasks, i));
       }
     }
@@ -151,7 +151,7 @@ export function AppContextProvider({ children }) {
 
   // create new random task
   useEffect(() => {
-    if (counter % 10 == 0) {
+    if (counter % 10 === 0) {
       setTasks(randomTask(tasks))
     }
   }, [counter]);

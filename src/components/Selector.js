@@ -12,7 +12,7 @@ const StrategySelector = ({speed}) => {
 
     let strategyList = availableStrategies.map((strategy) => 
       <label>
-        <input type="radio" name="strategy" value = {strategy} checked={strategy == currentStrategy} onChange={() => setStrategy(strategy)} /> {strategy}
+        <input type="radio" name="strategy" value = {strategy} checked={strategy === currentStrategy} onChange={() => setStrategy(strategy)} /> {strategy}
       </label>
     )
     

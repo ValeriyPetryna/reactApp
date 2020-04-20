@@ -1,7 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const TimeCounter = ({ name }) => {
-    //const { time } = useContext(AppContext);
     const [time, setTime] = useState(0);
 
     // Timer New Date
