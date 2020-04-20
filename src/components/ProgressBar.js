@@ -5,18 +5,19 @@ import {AppContext} from '../context/context';
 const Progress = () => {
     const { tasks } = useContext(AppContext);
 
-    let taskList = tasks.map((task) => 
-        <div className = "elem">
+    const taskList = tasks.map((task) => 
+        <div key={task.id} className='elem'>
             {<ProgressBar now = {task.current} max = {task.threshold} label={`${task.threshold}`}  />}
             <p>{task.current}</p>
         </div>
     )
+
     if (taskList.length) {
         return (
-            <div className = "elem">
+            <div className='elem'>
                 {taskList}
             </div>
-        )
+        );
     } 
 }
 

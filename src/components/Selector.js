@@ -10,12 +10,11 @@ const StrategySelector = ({speed}) => {
       setCurrentStrategy(strategy);
     }, [strategy]);
 
-    let strategyList = availableStrategies.map((strategy) => 
-      <label>
+    const strategyList = availableStrategies.map((strategy) => 
+      <label key={strategy}>
         <input type="radio" name="strategy" value = {strategy} checked={strategy === currentStrategy} onChange={() => setStrategy(strategy)} /> {strategy}
       </label>
     )
-    
     if (strategyList.length) {
         return (
             <div className = "radio">
