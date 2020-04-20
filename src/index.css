@@ -11,3 +11,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.field {
+  display: flex;
+}
+
+.elem {
+  margin: 50px;
+  margin-top:15px
+}
+
+.field-left {
+  display: block;
+  width: 50%;
+}
+
+.field-left-top {
+  display: flex;
+}
+
+.field-right {
+  width: 50%;
+}
+
+.field-left-bottom {
+  display: inline-grid;
+  margin: 20% 5%;
+}
+
+.radio {
+  display: grid;
+}
