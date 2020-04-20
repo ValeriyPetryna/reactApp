@@ -4,7 +4,7 @@ import {AppContext} from '../context/context';
 const StrategySelector = ({speed}) => {
     const { strategy, setStrategy } = useContext(AppContext);
     const [currentStrategy, setCurrentStrategy] = useState(strategy);
-    const availableStrategies = ['FCFS','LCFS','RR','SJN','SRT', 'Custom'];
+    const availableStrategies = ['FCFS','LCFS','RR','SJN','SRT','Custom'];
     
     useEffect(() => {
       setCurrentStrategy(strategy);
@@ -12,7 +12,7 @@ const StrategySelector = ({speed}) => {
 
     let strategyList = availableStrategies.map((strategy) => 
       <label>
-        <input type="radio" name="strategy" value = {strategy } checked={strategy == currentStrategy} onChange={() => setStrategy(strategy)} /> {strategy}
+        <input type="radio" name="strategy" value = {strategy} checked={strategy == currentStrategy} onChange={() => setStrategy(strategy)} /> {strategy}
       </label>
     )
     

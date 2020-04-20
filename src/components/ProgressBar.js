@@ -2,12 +2,13 @@ import React, { useContext } from 'react'
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import {AppContext} from '../context/context';
 
-const Progress = ({speed}) => {
+const Progress = () => {
     const { tasks } = useContext(AppContext);
 
     let taskList = tasks.map((task) => 
-        <div className = "elem">
-            {<ProgressBar now = {task.current} max = {15}  />}
+        <div key={task.index.toString()} className = "elem">
+            {<ProgressBar now = {task.current} max = {task.threshold} label={`${task.threshold}`}  />}
+            <p>{task.current}</p>
         </div>
     )
     if (taskList.length) {
