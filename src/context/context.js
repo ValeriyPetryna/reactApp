@@ -44,11 +44,13 @@ export function AppContextProvider({ children }) {
   const [taskId, setTaskId] = useState(null);
   const [strategy, setStrategy] = useState('FCFS');
   const counter = useCounter();
-  useTaskSpawner();
+  useTaskSpawner(counter, setTasks, tasks);
 
   //strategy
   useEffect(() => {
+    
     setTaskId(null)
+    console.log(taskId)
   }, [strategy]);
 
   // Tasks handler
