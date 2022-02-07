@@ -2,7 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import { useCounter } from '../hooks/useCounter';
+import { useTaskSpawner } from '../hooks/useTaskSpawner';
+
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
